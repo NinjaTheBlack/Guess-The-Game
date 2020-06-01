@@ -31,14 +31,14 @@ CMD:startgtn(playerid, params[])
 {
     if(!IsPlayerAdmin(playerid)) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You are not authorized to use this command!");
 
-    if(gtnon == 1) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}The lottery system is already started!");
+    if(gtnon == 1) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}The GTN event is already started!");
 
     else{
 
         GetPlayerName(playerid, pname,sizeof(pname));
-        format(str, sizeof(str), "{E22626}- {ffff00}AS {E22626}- %s(%d) has started a lottery event!", pname, playerid);
+        format(str, sizeof(str), "{E22626}- {ffff00}AS {E22626}- %s(%d) has started the Guess The Number event!", pname, playerid);
         SCMA(-1, str);
-        GameTextForAll("~r~Lottery ~y~Started! ~g~/lottery", 5000, 3);
+        GameTextForAll("~r~GTN ~y~Started! ~g~/guess", 5000, 3);
         gtnon = 1;
     }
     return 1;
@@ -47,20 +47,20 @@ CMD:guess(playerid, params[])
 {
     if(already == 1) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You have already joined it!");
 
-    if(gtnon == 0) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}There is no lottery event running");
+    if(gtnon == 0) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}There is no GTN event running");
 
     if(GetPlayerMoney(playerid) < ticket) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You don't have enough money!");
 
     new rand = random(50) + 1;
     new number;
 
-    if(sscanf(params, "i", number)) return SCM(playerid, -1, "{ffff00}[LOTTERY]: {00ff00}/lottery [1-50]");
+    if(sscanf(params, "i", number)) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}/guess [1-50]");
 
-    if(number < 1 || number > 50) return SCM(playerid, -1, "{ffff00}[LOTTERY]: {00ff00}The number must be from 1 to 50");
+    if(number < 1 || number > 50) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}The number must be from 1 to 50");
 
     if(gtnon == 1)
     {
-        SCM(playerid, -1, "{ffff00}[LOTTERY]: {00ff00}You have bought a ticket for 2500$!");
+        SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}You have bought a ticket for 2500$!");
         GivePlayerMoney(playerid, ticket);
         already = 1;
     }
@@ -72,9 +72,9 @@ CMD:guess(playerid, params[])
 
         GivePlayerMoney(playerid, prize);
 
-        SCM(playerid, -1, "{ffff00}[LOTTERY]: {00ff00}You have won the lottery event!");
+        SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}You have guessed the correct number!");
 
-        format(str, sizeof(str), "{ffff00}[LOTTERY]: {00ff00}%s has won the lottery event with 15000$", pname);
+        format(str, sizeof(str), "{ffff00}[GTN]: {00ff00}%s has guessed the correct number and won 15000$", pname);
         SCMA(-1, str);
 
         already = 0;
@@ -95,7 +95,7 @@ CMD:endgtn(playerid, params[])
 {
     if(!IsPlayerAdmin(playerid)) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You are not authorized to use this command!");
     
-    if(gtnon == 0) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}There is no lottery event running");
+    if(gtnon == 0) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}There is no GTN event running");
 
     else{
 
@@ -104,7 +104,7 @@ CMD:endgtn(playerid, params[])
         already = 0;
         gtnon = 0;
 
-        format(str,sizeof(str), "{E22626}- {ffff00}AS {E22626}- %s(%d) has ended the lottery event!", pname, playerid);
+        format(str,sizeof(str), "{E22626}- {ffff00}AS {E22626}- %s(%d) has ended the GTN event!", pname, playerid);
         SCMA(-1, str);
     }
     return 1;
