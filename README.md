@@ -1,4 +1,4 @@
-# Guess-The-Game
+# Guess-The-Number
 
 
 
@@ -13,8 +13,8 @@ Simply put the .amx file in your filterscripts folder, That's all!
 
 It consists of 3 commands:
 
-* /startgtg  --> To start the event. (Needs RCON)
-* /endgtg    --> Ends the event. (Needs RCON)
+* /startgtn  --> To start the event. (Needs RCON)
+* /endgtn    --> Ends the event. (Needs RCON)
 * /guess     --> To guess the number.
 
 # Editing
