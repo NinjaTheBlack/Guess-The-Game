@@ -40,6 +40,7 @@ CMD:startgtn(playerid, params[])
         SCMA(-1, str);
         GameTextForAll("~r~GTN ~y~Started! ~g~/guess", 5000, 3);
         gtnon = 1;
+        
     }
     return 1;
 }
@@ -51,7 +52,7 @@ CMD:guess(playerid, params[])
 
     if(GetPlayerMoney(playerid) < ticket) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You don't have enough money!");
 
-    new rand = random(50) + 1;
+    new rand = random(5) + 1;
     new number;
 
     if(sscanf(params, "i", number)) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}/guess [1-50]");
@@ -74,7 +75,7 @@ CMD:guess(playerid, params[])
 
         SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}You have guessed the correct number!");
 
-        format(str, sizeof(str), "{ffff00}[GTN]: {00ff00}%s(%d) has guessed the correct number and won 15000$", pname, playerid);
+        format(str, sizeof(str), "{FF0000}[GTN]: {FFFFFF}%s(%d) has guessed the correct number and won 15000$", pname, playerid);
         SCMA(-1, str);
 
         already = 0;
@@ -83,7 +84,7 @@ CMD:guess(playerid, params[])
 
     if(number != rand)
     {
-        SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}Incorrect number Try again later!");
+        SCM(playerid, -1, "{ffff00}[GTN]: {FF0000}Incorrect number Try again!");
         
         already = 0;
     }
