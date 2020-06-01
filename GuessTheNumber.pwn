@@ -61,7 +61,7 @@ CMD:guess(playerid, params[])
     if(gtnon == 1)
     {
         SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}You have bought a ticket for 2500$!");
-        GivePlayerMoney(playerid, ticket);
+        GivePlayerMoney(playerid, -ticket);
         already = 1;
     }
 
@@ -83,7 +83,7 @@ CMD:guess(playerid, params[])
 
     if(number != rand)
     {
-        SCM(playerid, -1, "{ffff00}[LOTTERY]: {00ff00}Incorrect number Try again later!");
+        SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}Incorrect number Try again later!");
 
         already = 0;
         gtnon = 0;   
