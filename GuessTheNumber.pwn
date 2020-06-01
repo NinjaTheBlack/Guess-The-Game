@@ -74,7 +74,7 @@ CMD:guess(playerid, params[])
 
         SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}You have guessed the correct number!");
 
-        format(str, sizeof(str), "{ffff00}[GTN]: {00ff00}%s has guessed the correct number and won 15000$", pname);
+        format(str, sizeof(str), "{ffff00}[GTN]: {00ff00}%s(%d) has guessed the correct number and won 15000$", pname, playerid);
         SCMA(-1, str);
 
         already = 0;
@@ -84,7 +84,8 @@ CMD:guess(playerid, params[])
     if(number != rand)
     {
         SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}Incorrect number Try again later!");
- 
+        
+        already = 0;
     }
     return 1;
 }
