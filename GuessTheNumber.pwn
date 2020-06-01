@@ -84,9 +84,7 @@ CMD:guess(playerid, params[])
     if(number != rand)
     {
         SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}Incorrect number Try again later!");
-
-        already = 0;
-        gtnon = 0;   
+ 
     }
     return 1;
 }
