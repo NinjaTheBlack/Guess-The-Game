@@ -14,12 +14,13 @@ Version: 1.0
 #define green 0x00FF00FF
 #define grey "{C3C2C2}"
 #define yellow "{ffff00}"
-#define prize 15000
-#define ticket 2500
+#define prize 15000    //Change if you want another value
+#define ticket 2500   //Change if you want another value
 new str[500];
 new gtnon;
 new pname[MAX_PLAYER_NAME];
 new already;
+new gtnplayer;
 
 public OnPlayerConnect(playerid)
 {
@@ -58,7 +59,9 @@ CMD:guess(playerid, params[])
     if(sscanf(params, "i", number)) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}/guess [1-50]");
 
     if(number < 1 || number > 50) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}The number must be from 1 to 50");
-
+    
+    if(gtnplayer == 1) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You have already used your try!");
+        
     if(gtnon == 1)
     {
         SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}You have bought a ticket for 2500$!");
@@ -87,7 +90,7 @@ CMD:guess(playerid, params[])
         SCM(playerid, -1, "{ffff00}[GTN]: {FF0000}Incorrect number Try again!");
         
         already = 0;
-        //add gtn = 0;  (if you want to end the event for the player)
+        //add gtnplayer = 1;  (if you want to end the event for the player)
     }
     return 1;
 }
