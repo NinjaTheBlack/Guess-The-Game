@@ -1,5 +1,5 @@
 /*
-Guess The Game System Made by Axye#5245
+Guess The Number System Made by Axye#5245
 
 Version: 1.0
 */
@@ -52,7 +52,7 @@ CMD:guess(playerid, params[])
 
     if(GetPlayerMoney(playerid) < ticket) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You don't have enough money!");
 
-    new rand = random(5) + 1;
+    new rand = random(50) + 1;
     new number;
 
     if(sscanf(params, "i", number)) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}/guess [1-50]");
@@ -87,6 +87,7 @@ CMD:guess(playerid, params[])
         SCM(playerid, -1, "{ffff00}[GTN]: {FF0000}Incorrect number Try again!");
         
         already = 0;
+        //add gtn = 0;  (if you want to end the event for the player)
     }
     return 1;
 }
