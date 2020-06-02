@@ -8,6 +8,7 @@ Guess The Number aka GTN is a simple game for SA-MP servers which entertains pla
 # Installation
 
 * Simply put the .amx file in your filterscripts folder.
+* Add "GuessTheNumber" in filterscripts section in server.cfg.
 
 # Usage
 
