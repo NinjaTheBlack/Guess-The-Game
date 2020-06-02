@@ -56,11 +56,11 @@ CMD:guess(playerid, params[])
     new rand = random(50) + 1;
     new number;
 
+    if(gtnplayer == 1) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You have already used your try!");
+
     if(sscanf(params, "i", number)) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}/guess [1-50]");
 
     if(number < 1 || number > 50) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}The number must be from 1 to 50");
-    
-    if(gtnplayer == 1) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You have already used your try!");
         
     if(gtnon == 1)
     {
@@ -78,7 +78,7 @@ CMD:guess(playerid, params[])
 
         SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}You have guessed the correct number!");
 
-        format(str, sizeof(str), "{FF0000}[GTN]: {FFFFFF}%s(%d) has guessed the correct number and won 15000$", pname, playerid);
+        format(str, sizeof(str), "{FF0000}[GTN]: {FFFFFF}%s(%d) has guessed the correct number (%d) and won 15000$", pname, playerid, number);
         SCMA(-1, str);
 
         already = 0;
@@ -90,7 +90,7 @@ CMD:guess(playerid, params[])
         SCM(playerid, -1, "{ffff00}[GTN]: {FF0000}Incorrect number Try again!");
         
         already = 0;
-        //add gtnplayer = 1;  (if you want to end the event for the player)
+        gtnplayer = 1;
     }
     return 1;
 }
