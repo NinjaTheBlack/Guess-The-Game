@@ -1,7 +1,7 @@
 /*
 Guess The Number System Made by Axye#5245
 
-Version: 1.0
+Version: 2.0
 */
 
 
@@ -10,10 +10,6 @@ Version: 1.0
 #include <zcmd>
 #define SCM SendClientMessage
 #define SCMA SendClientMessageToAll
-#define red "{E22626}"
-#define green 0x00FF00FF
-#define grey "{C3C2C2}"
-#define yellow "{ffff00}"
 #define prize 15000    //Change if you want another value
 #define ticket 2500   //Change if you want another value
 new str[500];
@@ -21,6 +17,8 @@ new gtnon;
 new pname[MAX_PLAYER_NAME];
 new already;
 new gtnplayer;
+new rand;
+
 
 public OnPlayerConnect(playerid)
 {
@@ -42,6 +40,7 @@ CMD:startgtn(playerid, params[])
         GameTextForAll("~r~GTN ~y~Started! ~g~/guess", 5000, 3);
         gtnon = 1;
         
+        rand = random(50) + 1;
     }
     return 1;
 }
@@ -53,7 +52,7 @@ CMD:guess(playerid, params[])
 
     if(GetPlayerMoney(playerid) < ticket) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You don't have enough money!");
 
-    new rand = random(50) + 1;
+    
     new number;
 
     if(gtnplayer == 1) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You have already used your try!");
@@ -83,18 +82,31 @@ CMD:guess(playerid, params[])
 
         already = 0;
         gtnon = 0;
+        gtnplayer = 0;
     }
 
     if(number != rand)
     {
-        SCM(playerid, -1, "{ffff00}[GTN]: {FF0000}Incorrect number Try again!");
+        SCM(playerid, -1, "{ffff00}[GTN]: {FF0000}Incorrect number Try again later!");
         
         already = 0;
         gtnplayer = 1;
     }
     return 1;
 }
+CMD:reveal(playerid, params[])
+{
+    if(!IsPlayerAdmin(playerid)) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You are not authorized to use this command!");
 
+    if(gtnon == 0) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}There is no GTN event running");
+
+    else
+    {
+        format(str, sizeof(str), "{9fbfdf}The Number is %d", rand);
+        SCM(playerid, -1, str);
+    }
+    return 1;
+}
 CMD:endgtn(playerid, params[])
 {
     if(!IsPlayerAdmin(playerid)) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You are not authorized to use this command!");
@@ -107,6 +119,7 @@ CMD:endgtn(playerid, params[])
 
         already = 0;
         gtnon = 0;
+        gtnplayer = 0;
 
         format(str,sizeof(str), "{E22626}- {ffff00}AS {E22626}- %s(%d) has ended the GTN event!", pname, playerid);
         SCMA(-1, str);
