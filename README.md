@@ -17,6 +17,7 @@ It consists of 3 commands:
 * /startgtn  --> To start the event. (Needs RCON)
 * /endgtn    --> Ends the event. (Needs RCON)
 * /guess     --> To guess the number.
+* /reveal    --> To reveal the random number generated. (Needs RCON)
 
 # Editing
 
