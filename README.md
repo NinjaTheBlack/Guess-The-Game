@@ -12,7 +12,7 @@ Guess The Number aka GTN is a simple game for SA-MP servers which entertains pla
 
 # Usage
 
-It consists of 3 commands:
+It consists of 4 commands:
 
 * /startgtn  --> To start the event. (Needs RCON)
 * /endgtn    --> Ends the event. (Needs RCON)
