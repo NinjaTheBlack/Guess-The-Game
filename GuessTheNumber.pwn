@@ -137,7 +137,7 @@ CMD:endgtn(playerid, params[])
 
         TurnOff();
 
-        format(str,sizeof(str), "{E22626}- {ffff00}AS {E22626}- %s(%d) has ended the GTN event!", pname, playerid);
+        format(str,sizeof(str), "{E22626}- {ffff00}AS {E22626}- %s(%d) has ended the GTN event! Restarting in 3 minutes.", pname, playerid);
         SCMA(-1, str);
 
     }
