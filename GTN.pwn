@@ -1,5 +1,5 @@
 /*
-Guess The Number System Made by Axye#5245
+Guess The Number System Made by Karim#6969
 
 Version: 5.0
 */
@@ -45,7 +45,7 @@ public OnFilterScriptInit()
 public OnFilterScriptExit()
 {
     print("     GuessTheNumber made by Axye unloaded.");
-
+    KillTimer(gtntimer);
     return 1;
 }
 CMD:startgtn(playerid, params[])
@@ -79,15 +79,15 @@ CMD:startgtn(playerid, params[])
 CMD:guess(playerid, params[])
 {
 	new number;
-    if(PlayerGuessedWrong[playerid]) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You have already guessed.");
+    if(PlayerGuessedWrong[playerid]) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You have already guessed!");
 
-    if(gtnon == 0) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}There is no GTN event running");
+    if(gtnon == 0) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}There is no GTN event running!");
 
     if(GetPlayerMoney(playerid) < ticket) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You don't have enough money!");
 
     if(sscanf(params, "i", number)) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}/guess [1-50]");
 
-    if(number < 1 || number > 50) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}The number must be from 1 to 50");
+    if(number < 1 || number > 50) return SCM(playerid, -1, "{ffff00}[GTN]: {00ff00}The number must be from 1 to 50!");
 
     
     if(number == rand)
@@ -123,7 +123,7 @@ CMD:reveal(playerid, params[])
 {
     if(!IsPlayerAdmin(playerid)) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}You are not authorized to use this command!");
 
-    if(gtnon == 0) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}There is no GTN event running.");
+    if(gtnon == 0) return SCM(playerid, -1, "{E22626}[ERROR]: {C3C2C2}There is no GTN event running!");
 
     else
     {
