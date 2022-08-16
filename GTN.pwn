@@ -36,7 +36,7 @@ public _ThreeMinTimer( ) {
 
 public OnFilterScriptInit()
 {
-    print("       GuessTheNumber made by Axye loaded.");
+    print("       GuessTheNumber made by Karim loaded.");
     SetTimer( "_ThreeMinTimer", gtntimer, true);
     return 1;
 }
@@ -44,7 +44,7 @@ public OnFilterScriptInit()
 
 public OnFilterScriptExit()
 {
-    print("     GuessTheNumber made by Axye unloaded.");
+    print("     GuessTheNumber made by Karim unloaded.");
     KillTimer(gtntimer);
     return 1;
 }
